@@ -29,6 +29,6 @@ Start Server
 python manage.py runserver Open a browser and go to http://127.0.0.1:8000
 Usage django-admin manage.py python -m django
 
-If you want to see my re click https://github.com/Garylabong/Student_Quiz_App
+If you want to see my repo click https://github.com/Garylabong/Student_Quiz_App
 
 Comments: The backend is working, allow the user (Student/teacher) register and activate the account through mail. The Quiz environment some of are not done and have bugs and erros to fix. If you have any suggestion to the app just let me know goodbless  :) Thanks to Vitor Freitas for the idea and some code that i've gather for this app, tutorial video in youtubea and lastly from https://stackoverflow.com for help of errors :)
