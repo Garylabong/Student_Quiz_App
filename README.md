@@ -42,11 +42,13 @@ Installing
 
 *py manage.py startapp.
 
+*py manage.py createsuperuser
+
 
 Start Server
 
 
-python manage.py runserver Open a browser and go to http://127.0.0.1:8000
+py manage.py runserver Open a browser and go to http://127.0.0.1:8000
 
 Usage django-admin manage.py python -m django
 
