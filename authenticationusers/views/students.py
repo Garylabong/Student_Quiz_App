@@ -29,9 +29,9 @@ class StudentSignUpView(CreateView):
         if request.method == 'POST':
             email = request.POST.get('email')
             try:
-                if User.objects.filter(email = email).first():
+                if User.objects.get(email = email).first():
                     messages.success(request, 'Email is taken.')
-                    return redirect('registration/signup_form')
+                    return redirect('registration/signup_form.html')
 
                 user = form.save()
                 auth_token = str(uuid.uuid4())

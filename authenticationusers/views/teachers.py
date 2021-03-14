@@ -29,13 +29,33 @@ class TeacherSignUpView(CreateView):
 
     def form_valid(self, form):
         request = self.request
-        email = request.POST.get('email')
-        user = form.save()
-        auth_token = str(uuid.uuid4())
-        profile_obj = Profile.objects.create(auth_token = auth_token, user = user )
-        profile_obj.save()
-        send_mail_after_registration(email , auth_token)
-        return redirect('/token')
+        if request.method == 'POST':
+            email = request.POST.get('email')
+            try:
+                if User.objects.filter(email = email).first():
+                    messages.success(request, 'Email is taken.')
+                    return redirect('registration/signup_form.html')
+
+                user = form.save()
+                auth_token = str(uuid.uuid4())
+                profile_obj = Profile.objects.create(user = user , auth_token = auth_token)
+                profile_obj.save()
+                send_mail_after_registration(email , auth_token)
+                return redirect('/token')
+
+            except Exception as e:
+                print(e)
+
+
+        return render(request , 'registration/signup_form.html')
+        #request = self.request
+        #email = request.POST.get('email')
+        #user = form.save()
+        #auth_token = str(uuid.uuid4())
+        #profile_obj = Profile.objects.create(auth_token = auth_token, user = user )
+        #profile_obj.save()
+        #send_mail_after_registration(email , auth_token)
+        #return redirect('/token')
 
 
 @method_decorator([login_required, teacher_required], name='dispatch')

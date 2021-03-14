@@ -44,7 +44,7 @@ def verify(request , auth_token):
         return redirect('/')
 
 def error_page(request):
-    return  render(request , 'error.html')
+    return  render(request , 'registration/error.html')
 
 def send_mail_after_registration(email , token):
     subject = 'Your accounts need to be verified'
