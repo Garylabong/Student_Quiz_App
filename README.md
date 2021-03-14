@@ -10,6 +10,8 @@ Admin users are allowed to:
 
 • Add user/remove/delete/question/quiz/is_student/is_teacher.
 
+  Note: Admin user must Add Category first for the teacher can add Quiz and questions
+
 • remove user accounts etc.
 
 
@@ -40,11 +42,13 @@ Installing
 
 *py manage.py startapp.
 
+*py manage.py createsuperuser
+
 
 Start Server
 
 
-python manage.py runserver Open a browser and go to http://127.0.0.1:8000
+py manage.py runserver Open a browser and go to http://127.0.0.1:8000
 
 Usage django-admin manage.py python -m django
 
