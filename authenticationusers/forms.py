@@ -8,8 +8,6 @@ from .models import (Answer, Question, Student, StudentAnswer, Teacher,
 
 class StudentSignUpForm(UserCreationForm):
 	email       = forms.EmailField(label="", widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'Email Address'}))
-#	first_name  = forms.CharField(label="", max_length=100, widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'First Name'}))
-#	last_name   = forms.CharField(label="", max_length=100, widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'Last Name'}))
 	interests = forms.ModelMultipleChoiceField(
 		queryset=Category.objects.all(),
     	widget=forms.CheckboxSelectMultiple,
@@ -30,23 +28,10 @@ class StudentSignUpForm(UserCreationForm):
 
 class TeacherSignUpForm(UserCreationForm):
     email       = forms.EmailField(label="", widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'Email Address'}))
-#    first_name  = forms.CharField(label="", max_length=100, widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'First Name'}))
-#    last_name   = forms.CharField(label="", max_length=100, widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'Last Name'}))
-  
+
     class Meta(UserCreationForm.Meta):
         model = User
 
-    #@transaction.atomic
-    #def save(self):
-    #    user = super().save(commit=False)
-    #    user.email=self.cleaned_data.get('email')
-    #    user.is_teacher = True
-    #    user.save()
-    #    teacher = Teacher.objects.create(user=user)
-    #
-    #    teacher.save()
-    #
-    #    return teacher
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email=self.cleaned_data.get('email')

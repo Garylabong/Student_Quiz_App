@@ -44,7 +44,7 @@ class StudentSignUpView(CreateView):
                 print(e)
 
 
-        return render(request , 'signup_form.html')
+        return render(request , 'registration/signup_form.html')
 
 
 @method_decorator([login_required, student_required], name='dispatch')
