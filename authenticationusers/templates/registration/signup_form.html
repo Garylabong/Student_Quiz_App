@@ -9,13 +9,6 @@
         <div class="card-body">
         <h2 class="text-center">Sign Up</h2>
         <div class="card-text">
-          {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-info">
-                  {{ messages }}
-                </div>
-                {% endfor %}
-              {% endif %}
           <form method="post" novalidate="">
             {% csrf_token %}
             {{ form|crispy }}
