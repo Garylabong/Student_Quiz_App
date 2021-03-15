@@ -34,7 +34,7 @@ class TeacherSignUpView(CreateView):
             try:
                 if User.objects.filter(email = email).first():
                     messages.success(request, 'Email is taken.')
-                    return redirect('registration/signup_form.html')
+                    return redirect('signup')
 
                 user = form.save()
                 auth_token = str(uuid.uuid4())
