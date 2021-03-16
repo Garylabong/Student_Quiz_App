@@ -58,4 +58,4 @@ If you want to see my repo click here https://github.com/Garylabong/Student_Quiz
 
 Comments: 
 
-The backend is working, allow the user (Student/teacher) register and activate the account through mail. The Quiz environment some of are not done and have bugs and erros to fix. If you have any suggestion to the app just let me know goodbless  :) Thanks to Vitor Freitas for the idea and some code that i've gather for this app, tutorial video in youtubea and lastly from https://stackoverflow.com for help of errors :)
+The backend is working, allow the user (Student/teacher) register and activate the account through mail. The Quiz environment some of are not done and have bugs and erros to fix. If you have any suggestion to the app just let me know goodbless  :) Thanks to Vitor Freitas for the idea and some code that i've gather for this app, tutorial video in youtube a and lastly from https://stackoverflow.com for help of errors :)
