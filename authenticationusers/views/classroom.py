@@ -32,16 +32,16 @@ def verify(request , auth_token):
         if profile_obj:
             if profile_obj.is_verified:
                 messages.success(request, 'Your account is already verified.')
-                return redirect('login')
+                return redirect('/login')
             profile_obj.is_verified = True
             profile_obj.save()
             messages.success(request, 'Your account has been verified.')
-            return redirect('login')
+            return redirect('/login')
         else:
-            return redirect('error')
+            return redirect('/error')
     except Exception as e:
         print(e)
-        return redirect('/')
+        return redirect('/success')
 
 def error_page(request):
     return  render(request , 'registration/error.html')
