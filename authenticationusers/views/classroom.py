@@ -32,13 +32,13 @@ def verify(request , auth_token):
         if profile_obj:
             if profile_obj.is_verified:
                 messages.success(request, 'Your account is already verified.')
-                return redirect('registration/login')
+                return redirect('login')
             profile_obj.is_verified = True
             profile_obj.save()
             messages.success(request, 'Your account has been verified.')
-            return redirect('registration/login')
+            return redirect('login')
         else:
-            return redirect('registration/error')
+            return redirect('error')
     except Exception as e:
         print(e)
         return redirect('/')
