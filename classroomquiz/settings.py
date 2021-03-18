@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authenticationusers',
+    'authentication',
 
 
     'crispy_forms',
@@ -143,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'authenticationusers.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 LOGIN_URL = 'login'
 
