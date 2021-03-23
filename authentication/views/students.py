@@ -89,7 +89,7 @@ class TakenQuizListView(ListView):
 
     def get_queryset(self):
         queryset = self.request.user.student.taken_quizzes \
-            .select_related('quiz', 'quiz__subject') \
+            .select_related('quiz', 'quiz__category') \
             .order_by('quiz__name')
         return queryset
 
