@@ -12,7 +12,11 @@ class Profile(models.Model):
     is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+#    def __str__(self):
+#        return self.user.username
+
+    @property
+    def get_username(self):
         return self.user.username
 
 class Category(models.Model):
@@ -59,8 +63,13 @@ class Student(models.Model):
         questions = quiz.questions.exclude(pk__in=answered_questions).order_by('text')
         return questions
 
-    def __str__(self):
-    	return self.user.username
+#    def __str__(self):
+#    	return self.user.username
+
+        @property
+        def get_student_username(self):
+            return self.user.username
+
 
 class TakenQuiz(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_quizzes')
@@ -77,6 +86,10 @@ class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
 
-    def __str__(self):
-    	return self.user.username
+#    def __str__(self):
+#    	return self.user.username
+
+    @property
+    def get_teacher_username(self):
+        return self.user.username
 
