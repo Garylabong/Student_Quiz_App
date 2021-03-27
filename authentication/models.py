@@ -6,17 +6,19 @@ class User(AbstractUser):
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.username
+
+
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    auth_token = models.CharField(max_length=100 )
+    user =        models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    auth_token =  models.CharField(max_length=100 )
     is_verified = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at =  models.DateTimeField(auto_now_add=True)
+    birthdate =   models.DateField(null=True, blank=True)
 
-#    def __str__(self):
-#        return self.user.username
-
-    @property
-    def get_username(self):
+    def __str__(self):
         return self.user.username
 
 class Category(models.Model):
@@ -62,19 +64,17 @@ class Student(models.Model):
             .values_list('answer__question__pk', flat=True)
         questions = quiz.questions.exclude(pk__in=answered_questions).order_by('text')
         return questions
-
-#    def __str__(self):
-#    	return self.user.username
-
-        @property
-        def get_student_username(self):
+        
+        def __str__(self):
             return self.user.username
+            
 
 
 class TakenQuiz(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_quizzes')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='taken_quizzes')
-    score = models.FloatField()
+    #score = models.FloatField() change to DecimalField 
+    score = models.DecimalField(max_digits=5, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
 
 class StudentAnswer(models.Model):
@@ -86,10 +86,6 @@ class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
 
-#    def __str__(self):
-#    	return self.user.username
-
-    @property
-    def get_teacher_username(self):
-        return self.user.username
+    def __str__(self):
+    	return self.user.username
 
