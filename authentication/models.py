@@ -73,7 +73,6 @@ class Student(models.Model):
 class TakenQuiz(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_quizzes')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='taken_quizzes')
-    #score = models.FloatField() change to DecimalField 
     score = models.DecimalField(max_digits=5, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
 
