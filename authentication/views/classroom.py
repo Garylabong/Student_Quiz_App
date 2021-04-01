@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -52,3 +53,16 @@ def send_mail_after_registration(email , token):
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message , email_from ,recipient_list )
+
+def change_password(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(data=request.POST, user= request.user)
+		if form.is_valid():
+			form.save()
+			messages.success(request,('You Have Edited Your Password...'))
+			return redirect('home')
+	else:
+		form = PasswordChangeForm(user= request.user)
+
+	context = {'form': form}
+	return render(request, 'registration/change_password.html', context)
