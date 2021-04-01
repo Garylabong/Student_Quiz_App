@@ -3,10 +3,10 @@
 {% block content %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">My Quizzes</li>
+      <li class="breadcrumb-item active" aria-current="page"> {{ user.username }} Quizzes</li>
     </ol>
   </nav>
-  <h2 class="mb-3">My Quizzes</h2>
+  <h2 class="mb-3">{{ user.username }} Quizzes</h2>
   <a href="{% url 'teachers:quiz_add' %}" class="btn btn-primary mb-3" role="button">Add quiz</a>
   <div class="card">
     <table class="table mb-0">
@@ -23,7 +23,7 @@
         {% for quiz in quizzes %}
           <tr>
             <td class="align-middle"><a href="{% url 'teachers:quiz_change' quiz.pk %}">{{ quiz.name }}</a></td>
-            <td class="align-middle">{{ quiz.category.get_html_badge }}</td>
+            <td class="align-middle">{{ quiz.category }}</td>
             <td class="align-middle">{{ quiz.questions_count }}</td>
             <td class="align-middle">{{ quiz.taken_count }}</td>
             <td class="text-right">

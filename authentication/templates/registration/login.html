@@ -3,10 +3,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <div class="row justify-content-center">
+  <div class="row justify-content-center text-dark">
     <div class="col-6">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body text-light bg-dark">
       <h2 class="text-center">Log In</h2>
           <div class="card-text">
 
@@ -14,7 +14,7 @@
         {% csrf_token %}
         {{ form| crispy}}
 
-        <button type="submit" class="btn btn-dark">Log In</button>
+        <button type="submit" class="btn btn-outline-secondary ml-1">Log In</button>
         Don't have an account?
         <div class="signup row justify-content-center">
           <hr class="justify-content-center">

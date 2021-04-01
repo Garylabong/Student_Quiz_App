@@ -31,6 +31,9 @@ class Quiz(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
     name = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='quizzes')
+#    number_of_questions =models.IntegerField()
+#	time = models.IntegerField(help_text="duration of the quiz in minutes")
+#	required_score_to_pass = models.IntegerField(help_text="required score in %")
 
     def __str__(self):
         return self.name
@@ -64,9 +67,9 @@ class Student(models.Model):
             .values_list('answer__question__pk', flat=True)
         questions = quiz.questions.exclude(pk__in=answered_questions).order_by('text')
         return questions
-        
-        def __str__(self):
-            return self.user.username
+
+    def __str__(self):
+        return self.user.username
             
 
 
