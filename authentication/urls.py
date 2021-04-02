@@ -11,6 +11,7 @@ path('success/' , success , name='success'),
 path('verify/<auth_token>' , verify , name="verify"),
 path('error/' , error_page , name="error"),
 path('change_password/', classroom.change_password, name='change_password'),
+path('edit_profile/',classroom.edit_profile, name="edit_profile"),
     path('', classroom.home, name='home'),
 
     path('students/', include(([

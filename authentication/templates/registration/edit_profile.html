@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="row justify-content-center text-dark">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body text-light bg-dark">
+      <h2 class="text-center">Edit Profile</h2>
+          <div class="card-text">
+			<form method="POST" action="{% url 'edit_profile' %}">
+                {% csrf_token %}
+                {% if form.errors %}
+                {% endif %}
+                    {{ form.as_p }}
+                <input type="submit" value="Edit Profile" class="btn btn-secondary">
+            </form>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

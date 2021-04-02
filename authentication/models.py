@@ -12,11 +12,17 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    user =        models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    auth_token =  models.CharField(max_length=100 )
+    user        = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    auth_token  = models.CharField(max_length=100 )
     is_verified = models.BooleanField(default=False)
-    created_at =  models.DateTimeField(auto_now_add=True)
-    birthdate =   models.DateField(null=True, blank=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+    birthdate   = models.DateField(null=True, blank=True)
+    
+#    def get_profile_full_name(self):
+#        return self.get_full_name
+        
+#        def __str__(self):
+#            return self.user
 
     def __str__(self):
         return self.user.username

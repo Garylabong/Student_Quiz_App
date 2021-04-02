@@ -1,9 +1,19 @@
-{% extends 'base.html' %}
+{% extends "base.html"%}
 
-{% block content %}
-  <h2>Homepage</h2>
-  <p>Welcome to My Site, {% if user.is_authenticated %}{{ user.username }}{% else %}vistor{% endif %}!</p>
-  <p>
-  	<strong> Total users registerd: </strong> {{ count }}
-  </p>
-{% endblock %}
+    {% block content %}
+
+
+    <div class="global-container">
+        <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">Error</h3>
+
+            <a href="/" class="btn btn-success">Back</a>
+            
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+    {% endblock %}

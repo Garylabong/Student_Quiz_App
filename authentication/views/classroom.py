@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from authentication.forms import EditProfileForm
+from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -66,3 +68,16 @@ def change_password(request):
 
 	context = {'form': form}
 	return render(request, 'registration/change_password.html', context)
+
+def edit_profile(request):
+	if request.method == 'POST':
+		form = EditProfileForm(request.POST, instance= request.user)
+		if form.is_valid():
+			form.save()
+			messages.success(request,('You Have Edited Your Profile...'))
+			return redirect('home')
+	else:
+		form = EditProfileForm(instance= request.user)
+
+	context = {'form': form}
+	return render(request, 'registration/edit_profile.html', context)
