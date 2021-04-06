@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <div class="card-body text-light bg-dark">
+      <h1 class="display-3 text-info text-center">Add Category (Course/Subject)</h1>
+      <p class="text-center">Add Category Name (Course/Subject) were in you can add an specific question to create.</p>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Save</button>
+      </form>
+      <br>
+      <p><a class="btn btn-primary btn-lg btn btn-block" href="{% url 'teachers:quiz_change_list' %}" role="button">Start Add Questions &raquo;</a></p>
+      Note: You can start adding questions when you created a Category 
+    </div>
+  </div>
+</div>
+{% endblock %}

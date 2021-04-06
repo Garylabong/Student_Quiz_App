@@ -12,11 +12,14 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 
 #from ..decorators import teacher_required
 from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm
-from ..models import Answer, Question, Quiz, User, Profile
+from ..models import Answer, Question, Quiz, User, Profile,Category
 from .classroom import *
 
 import uuid
 from django.contrib import messages
+
+def T_dashboard(request):
+    return render(request, 'teachers/T_dashboard.html',{})
 
 class TeacherSignUpView(CreateView):
     model = User
@@ -73,6 +76,20 @@ class QuizListView(ListView):
             .annotate(taken_count=Count('taken_quizzes', distinct=True))
         return queryset
 
+@method_decorator(login_required, name='dispatch')
+class QuizAddCategoryView(CreateView):
+    model = Category
+    fields = '__all__'
+    template_name = 'teachers/add_category.html'
+    
+    def form_valid(self, form):
+        quiz = form.save(commit=False)
+        quiz.owner = self.request.user
+        quiz.save()
+        messages.success(self.request, 'You have been Create a Category! Go ahead and add some questions now.')
+        return redirect('teachers:quiz_change_list')
+
+        
 
 @method_decorator(login_required, name='dispatch')
 class QuizCreateView(CreateView):

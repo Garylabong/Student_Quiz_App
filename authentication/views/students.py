@@ -15,6 +15,9 @@ from .classroom import *
 import uuid
 from django.contrib import messages
 
+def S_dashboard(request):
+    return render(request, 'students/S_dashboard.html',{})
+    
 class StudentSignUpView(CreateView):
     model = User
     form_class = StudentSignUpForm

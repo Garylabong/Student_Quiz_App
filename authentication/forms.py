@@ -22,11 +22,6 @@ class EditProfileForm(UserChangeForm):
         self.fields['username'].widget.attrs['placeholder']  = 'User Name'
         self.fields['username'].label = ''
         self.fields['username'].help_text = '<span class ="form-text text-muted"><small></small></span>'
-        
-        self.fields['password'].widget.attrs['class']       = 'form-control'
-        self.fields['password'].widget.attrs['placeholder'] = 'Password'
-        self.fields['password'].label = ''
-        self.fields['password'].help_text = '<span class ="form-text text-muted"><small></small></span>'
 
 class StudentSignUpForm(UserCreationForm):
     email       = forms.EmailField(label="", widget=forms. TextInput(attrs={'class':'form-control', 'placeholder': 'Email Address'}))

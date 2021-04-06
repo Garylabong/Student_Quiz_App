@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <div class="card-body text-light bg-dark">
+      <h1 class="display-3 text-info text-center">Teacher</h1>
+      <p class="text-center">A Student Quiz refers to a short test of knowledge, typically around 10 questions in length, with question formats often including multiple choice.</p>
+      <p><a class="btn btn-primary btn-lg btn ml-5" href="{% url 'teachers:quiz_add_category' %}" role="button">Start &raquo;</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

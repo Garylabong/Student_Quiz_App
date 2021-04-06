@@ -3,11 +3,17 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h2 class="mb-3">Update your interests</h2>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-success">Save changes</button>
-    <a href="{% url 'students:quiz_list' %}" class="btn btn-outline-secondary">Nevermind</a>
-  </form>
+<div class="jumbotron">
+  <div class="container">
+    <div class="card-body text-light bg-dark">
+      <h2 class="mb-3">Update your interests</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Save changes</button>
+        <a href="{% url 'students:quiz_list' %}" class="btn btn-outline-secondary">Nevermind</a>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
