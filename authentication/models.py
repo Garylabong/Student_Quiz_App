@@ -16,13 +16,6 @@ class Profile(models.Model):
     auth_token  = models.CharField(max_length=100 )
     is_verified = models.BooleanField(default=False)
     created_at  = models.DateTimeField(auto_now_add=True)
-    birthdate   = models.DateField(null=True, blank=True)
-    
-#    def get_profile_full_name(self):
-#        return self.get_full_name
-        
-#        def __str__(self):
-#            return self.user
 
     def __str__(self):
         return self.user.username
@@ -37,9 +30,6 @@ class Quiz(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
     name = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='quizzes')
-#    number_of_questions =models.IntegerField()
-#	time = models.IntegerField(help_text="duration of the quiz in minutes")
-#	required_score_to_pass = models.IntegerField(help_text="required score in %")
 
     def __str__(self):
         return self.name

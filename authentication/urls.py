@@ -5,7 +5,6 @@ from . import views
 from .views.classroom import *
 
 urlpatterns = [
-#path('',views.home, name="home"),
 path('token/' , token_send , name="token_send"),
 path('success/' , success , name='success'),
 path('verify/<auth_token>' , verify , name="verify"),

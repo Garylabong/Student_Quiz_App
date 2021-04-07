@@ -7,10 +7,7 @@ from django.forms import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  UpdateView)
-
-#from ..decorators import teacher_required
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView, UpdateView)
 from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm
 from ..models import Answer, Question, Quiz, User, Profile,Category
 from .classroom import *
@@ -61,7 +58,6 @@ class TeacherSignUpView(CreateView):
         #return redirect('/token')
 
 
-#@method_decorator([login_required, teacher_required], name='dispatch')
 @method_decorator(login_required, name='dispatch')
 class QuizListView(ListView):
     model = Quiz
@@ -168,7 +164,6 @@ class QuizResultsView(DetailView):
 
 
 @login_required
-#@teacher_required
 def question_add(request, pk):
     # By filtering the quiz by the url keyword argument `pk` and
     # by the owner, which is the logged in user, we are protecting
@@ -191,7 +186,6 @@ def question_add(request, pk):
 
 
 @login_required
-#@teacher_required
 def question_change(request, quiz_pk, question_pk):
     # Simlar to the `question_add` view, this view is also managing
     # the permissions at object-level. By querying both `quiz` and
