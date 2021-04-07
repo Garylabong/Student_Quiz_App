@@ -10,7 +10,6 @@ Admin users are allowed to:
 
 • Add user/remove/delete/question/quiz/is_student/is_teacher.
 
-  Note: Admin user must Add Category first for the teacher can add Quiz and questions
 
 • remove user accounts etc.
 
@@ -20,7 +19,11 @@ Users are allowed:
 
 • Register user account (Student/Teacher).
 
-• Add for teacher environment/question/quiz etc. 
+• Add for teacher environment a Category (Course/Subject), Questions, Quiz 
+
+   * Note: Teacher can start adding questions when He/She created a Category (Course/Subject)
+
+* Student can take quiz by 
 
 • Edit Profile. 
 
