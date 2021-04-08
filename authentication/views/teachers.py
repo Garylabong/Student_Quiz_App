@@ -82,7 +82,7 @@ class QuizAddCategoryView(CreateView):
         quiz = form.save(commit=False)
         quiz.owner = self.request.user
         quiz.save()
-        messages.success(self.request, 'You have been Create a Category! Go ahead and add some questions now.')
+        messages.success(self.request, 'You have been Created a Category! Go ahead and add some Quiz now.')
         return redirect('teachers:quiz_change_list')
 
         
@@ -203,7 +203,7 @@ def question_change(request, quiz_pk, question_pk):
         fields=('text', 'is_correct'),
         min_num=2,
         validate_min=True,
-        max_num=10,
+        max_num=20,
         validate_max=True
     )
 
