@@ -5,6 +5,7 @@ from authentication.forms import EditProfileForm
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
+from authentication.forms import PasswordChangingForm
 
 class SignUpView(TemplateView):
     template_name = 'registration/signup.html'
@@ -58,13 +59,13 @@ def send_mail_after_registration(email , token):
 
 def change_password(request):
 	if request.method == 'POST':
-		form = PasswordChangeForm(data=request.POST, user= request.user)
+		form = PasswordChangingForm(data=request.POST, user= request.user)
 		if form.is_valid():
 			form.save()
 			messages.success(request,('You Have Edited Your Password...'))
 			return redirect('home')
 	else:
-		form = PasswordChangeForm(user= request.user)
+		form = PasswordChangingForm(user= request.user)
 
 	context = {'form': form}
 	return render(request, 'registration/change_password.html', context)

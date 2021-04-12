@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.db import transaction
 
 from .models import (Answer, Question, Student, StudentAnswer, Teacher,
@@ -99,6 +99,16 @@ class TeacherSignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class PasswordChangingForm(PasswordChangeForm):
+    old_password = forms.CharField(label="", widget=forms. PasswordInput(attrs={'class':'form-control','placeholder': 'Old password', 'type':'password'}))
+    new_password1  = forms.CharField(label="", max_length=100, widget=forms. PasswordInput(attrs={'class':'form-control','placeholder': 'New password', 'type':'password'}))
+    new_password2   = forms.CharField(label="", max_length=100, widget=forms. PasswordInput(attrs={'class':'form-control','placeholder': 'New password confirmation', 'type':'password'}))
+
+    class Meta:
+        model = User
+        fields = ('old_password', 'new_password1', 'new_password2')
+
 
 class StudentInterestsForm(forms.ModelForm):
     class Meta:
