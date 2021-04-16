@@ -8,12 +8,24 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ("is_student","is_teacher")
     search_fields = ['first_name', 'last_name']
 
+class ChoiceInline(admin.StackedInline):
+    model = Answer
+    extra = 3
+
+class QuestionAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['text']}),
+    ]
+    inlines = [ChoiceInline]
+
+admin.site.register(Question, QuestionAdmin)
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Profile)
 admin.site.register(Category)
 admin.site.register(Quiz)
-admin.site.register(Question)
-admin.site.register(Answer)
+#admin.site.register(Question)
+#admin.site.register(Answer)
 admin.site.register(Student)
 admin.site.register(TakenQuiz)
 admin.site.register(StudentAnswer)
